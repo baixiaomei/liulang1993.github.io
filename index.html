@@ -1,10 +1,20 @@
+---
+layout: default
+title: 我的Blog
+---
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>重新开始</title>
-</head>
-<body>
-	<P>一点一点来</P>
-</body>
-</html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<h2>{{ page.title }}</h2>
+		<p>最新文章之一</p>
+		<ul>
+　　　　{% for post in site.posts %}
+　　　　　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+　　　　{% endfor %}
+　	  　</ul>
+	</body>
+	</html>	
