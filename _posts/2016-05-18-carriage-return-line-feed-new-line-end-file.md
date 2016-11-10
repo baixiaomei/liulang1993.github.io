@@ -12,29 +12,32 @@ category: blog
 
 
 谈及`CSS的书写规范`，说白了无非就是以下几点：
-1.（顺序）什么东西先写，什么东西后写。
-2.（内容）什么东西可以简写，什么东西不能简写。
+*（顺序）什么东西先写，什么东西后写。
+*（内容）什么东西可以简写，什么东西不能简写。
 
 我们来谈一下这2点
 
-首先，我们先来谈论一下`第1点`，也就是所谓的声明顺序。
+首先，我们先来谈论一下`第1点`。
+*（顺序）
 我们要尽可能的将相关的内容整合在一个小组，按照有序的顺序来书写：
-
-1.Position  (位置：absolute/relative 、top/right/bottom/left 、z-index、float 、display）
-2.Box model（盒子模型：width 、height 、margin、padding）
-3.Type（类型:font-size/family/style/weight/variant 、line-height 、color、text-align）
-4.Background（背景:background-color/image/size/position  、border ）
-5.Other  (其他：animation 、transition 、 opacity)
-
+<ul>
+    <li>Position (位置：absolute/relative 、top/right/bottom/left 、z-index、float 、display）</li>
+    <li>Box model（盒子模型：width 、height 、margin、padding）</li>
+    <li>Type（类型:font-size/family/style/weight/variant 、line-height 、color、text-align）</li>
+    <li>Background（背景:background-color/image/size/position  、border ）</li>
+    <li>Other (其他：animation 、transition 、 opacity)</li>
+</ul>
 示范如下：
 ![正确写法效果图](/images/vvimg/顺序1.png "Title")
 
 以上为基本常用的属性， 至于顺序大家就可以参照以上的顺序进行书写。
 
 
-聊完了基本的顺序之后，我们可以开始聊一聊`第二点`，哪些内容我们是可以简写，从而提高效率的方式。
+2.聊完了基本的顺序之后，我们可以开始聊一聊`第2点`
+*（内容）
 
-当我们需要显示所有值得情况下， 应当尽量限制用简写的方式来声明，以上bad example 为常见的滥用简写属性声明的情况，大多数情况下， 我们不需要为简写形式的属性声明指定所有的值，在必要的时候，进行使用，例如margin-top，margin-right，margin-bottom，margin-left,堆放了4个margin值，显得不都简洁，内容繁多，这时，我们可以通过一个margin: 同时设定4个值，从以上的例子向我们说明了，我们要学会使用简写的同时，还要避免过多的使用简写的方式， 否则会导致代码混乱。并且对属性值带来不必要的覆盖，引发副作用。
+当我们需要显示所有值得情况下， 应当尽量限制用简写的方式来声明，以上bad example 为常见的滥用简写属性声明的情况，大多数情况下， 我们不需要为简写形式的属性声明指定所有的值，在必要的时候，进行使用。
+例如margin-top，margin-right，margin-bottom，margin-left,堆放了4个margin值，显得不都简洁，内容繁多，这时，我们可以通过一个margin: 同时设定4个值，从以上的例子向我们说明了，我们要学会使用简写的同时，还要避免过多的使用简写的方式， 否则会导致代码混乱。并且对属性值带来不必要的覆盖，引发副作用。
 
 ![正确写法效果图](/images/vvimg/顺序2.png "Title")
 
