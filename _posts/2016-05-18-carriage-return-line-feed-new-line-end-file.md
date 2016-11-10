@@ -5,7 +5,7 @@ description: 回车和换行在不同系统下面定义不同，时不时会有�
 category: blog
 ---
 
-## 回车和换行
+## DIV共线实例
 
 回车 (Carriage Return) 和换行 (Line Feed) 的区别，[这里](http://stackoverflow.com/questions/1761051/difference-between-n-and-r)有一个历史原因可参考：
 
