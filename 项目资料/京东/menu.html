@@ -1,0 +1,4234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>menu</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.content{
+		width: 1210px;
+		height: 465px;
+		background-color: orange;
+		margin: 0 auto;
+	}
+	.menu{
+		width: 210px;
+		height: 465px;
+		float: left;
+		position: relative;
+		background-color: #b61d1d;
+		list-style: ;
+	}
+	.menu-list{
+		list-style: none;
+
+	}
+	.menu-list li{
+		display: block;
+		padding-left: 10px;
+		width: 210px;
+		line-height: 31px;
+		height: 31px;
+	}
+	.menu-list i{
+		float: right;
+		color: #fff;
+		font-size: 12px;
+		margin-right: 20px;
+	}
+	.menu-list li a{
+		text-decoration: none;
+		color: #fff;
+		font-size: 13px;
+
+	}
+	.menu-list li:hover{
+		background-color: #fff;
+		color: #fff;
+	}
+	.menu-list li:hover a {
+		color: red;
+	}
+	.neirong{
+		position: absolute;
+		left: 210px;
+		top: 0;
+		width: 1000px;
+		color: black;
+		height: 465px;
+		display: none;
+		float: left;
+		background-color: #f1f1f1;
+
+	}
+	.menu-list li:hover .neirong{
+		display: block;
+	}
+
+	.neirong-nav-left{
+		width: 790px;
+		height: 465px;
+		margin-left: 20px;
+		background-color:#f1f1f1;
+		float: left;
+	}
+	.nr-nav-left-t{
+		width: 810px;
+		height: 40px;
+
+	}
+	.nr-nav-left-t span{
+		display: block;
+		float: left;
+		margin-right: 10px;
+		margin-top: 5px;
+		margin-left: 10px;
+		line-height: 20px;
+		height: 20px;
+		text-align: center;
+	}
+	.nr-nav-left-t i{
+		background: black;
+		float: right;
+		display: block;
+		margin-right: 0;
+		text-align: center;
+		width: 20px;
+	}
+	.nr-nav-t-top{
+		width: 810px;
+		height: 30px;
+		margin-top: 10px;
+		float: left;
+	}
+	.nr-nav-t-top span{
+		background-color: gray;
+	}
+	.nr-nav-t-top1{
+		width: 810px;
+		height: 30px;
+		margin-top: 10px;
+		float: left;
+	}
+	.nr-nav-t-top1 strong{
+		display: block;
+		float: left;
+		width: 70px;
+		text-align: right;
+		font-size: 12px;
+		line-height: 20px;
+		height: 20px;
+		margin-top: 5px;
+	}
+	.nr-nav-t-top1 span{
+		display: block;
+		float: left;
+		color: #bbb;
+		margin-top: 5px;
+		border-left: 1px solid #bbb;
+		padding-left: 15px;
+		line-height: 20px;
+		height: 20px;
+		text-align: center;
+	}
+
+
+
+
+	.neirong-nav-right{
+		width: 190px;
+		height: 465px;
+		background-color: #f1f1f1;
+		float: right;
+	}
+	.neirong-nav-right img{
+		margin: 10px 10px;
+	}
+
+	#slideshow{
+				width: 730px;
+				height: 455px;
+				float: left;
+				overflow: hidden;
+				position: relative;
+				margin: 10px 10px 0 10px;
+				background-color: green;
+	}
+
+	
+	#list{
+		width: 5200px;
+		height: 455px;
+		position: absolute;
+		z-index: 1;
+	}
+	#list img{
+		float: left;
+		height: 455px;
+		width: 730px;
+	}
+	#buttons{
+		position: absolute;
+		height: 10px;
+		width: 200px;
+		z-index: 2;
+		bottom: 20px;
+		left: 300px;
+	}
+	#buttons span{
+		cursor: pointer;
+		float: left;
+		bottom: 1px solid #fff;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		border-radius: 10px;
+		background-color: #bbb;
+		margin-right: 5px;
+	}
+	#buttons .on{
+		background-color: red;
+	}
+	.arrow{
+		cursor: pointer;
+		display: none;
+		line-height: 40px;
+		text-align: center;
+		font-size: 30px;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		z-index:2;
+		top: 200px;
+		background-color: rgba(0,0,0,.3);
+		color: #fff;
+	}
+	.arrow:hover{
+		background-color: rgba(0,0,0,.7);
+	}
+	#slideshow:hover .arrow{
+		display: block;
+	}
+	#prev{
+		left: 20px;
+	}
+	#next{
+		right: 20px;
+	}
+
+
+
+
+
+	.news{
+		width: 250px;
+		height: 465px;
+		background-color: #f3f3f3;
+		float: right;
+	}
+
+	</style>
+
+	<script type="text/javascript">
+
+		window.onload=function(){
+			var slideshow = document.getElementById('slideshow')
+			var list = document.getElementById('list')
+			var buttons = document.getElementById('buttons').getElementsByTagName('span')
+			var prev = document.getElementById('prev')
+			var next = document.getElementById('next')
+			//每次等到图片显示完毕以后才能再次点击的优化
+			var animated = false;
+			var timer;
+
+			// 小圆点显示提示
+			var index = 1;
+			// 小圆点操作函数
+			function showButton(){
+				for (var i = 0; i < buttons.length; i++) {
+						if (buttons[i].className == 'on') {
+							buttons[i].className = '';
+							break;
+						};
+					};	
+
+				buttons[index - 1].className = 'on';
+			}
+
+
+
+
+
+
+			// 箭头操作函数
+			function animate(offset){
+				animated =true;
+				var newLeft=parseInt(list.style.left)+offset;
+				
+				var time = 500;// 图片位移时间
+				var interval = 10;//图片位移间隔时间；
+				var speed = offset/(time/interval);//每次的位移量
+				// 什么情况下才做位移
+				function go(){
+					if( (speed<0 && parseInt(list.style.left)>newLeft)||(speed>0 && parseInt(list.style.left)<newLeft)) {
+						list.style.left=parseInt(list.style.left)+speed+'px';
+						setTimeout(go,interval);
+
+					}
+
+					else{
+						animated  = false;
+
+						list.style.left = newLeft +'px';
+						if(newLeft>-730){
+							list.style.left=-3650+'px';
+						}
+						if(newLeft<-3650){
+							list.style.left=-730+'px';
+						}
+					}
+				}
+
+				go();
+
+	
+			}	
+
+
+			//自动播放
+			function play(){
+				timer = setInterval(function(){
+					next.onclick();
+				},3000);
+			}
+			// 停止播放
+			function stop(){
+				clearInterval(timer);
+			}
+
+
+			// 添加事件绑定(一下可以合并成一个参数，animate)
+			/*
+				next.onclick = function(){
+					list.style.left = parseInt(list.style.left) - 600 +'px';
+				}
+				prev.onclick = function(){
+					list.style.left = parseInt(list.style.left) + 600 +'px';
+				}
+			*/
+			// 箭头事件简写如下
+				next.onclick = function(){
+					if (index == 5)
+					{
+						index = 1;
+					}
+					else{
+						index += 1;
+					}
+
+					showButton();//小圆点移动
+					if(!animated)
+						{
+							animate(-730);
+						}//图片移动
+				}
+				prev.onclick = function(){
+					if (index == 1)
+					{
+						index = 5;
+					}
+					else{
+						index -= 1;
+					}
+					showButton();//小圆点移动
+					if(!animated)
+						{
+							animate(730);//图片移动	
+						} 
+				}
+
+				// 按钮事件
+				for (var i = 0; i < buttons.length; i++) {
+						// 如果按钮就在当前图片，再次点击当前图片要保证光标不会跑动，仍然留在当前left.
+						buttons[i].onclick= function(){
+						if (this.className == 'on') {
+							return;
+						};	
+
+
+						var myIndex = parseInt(this.getAttribute('index'))//dom自定义属性获取	
+						var offset = -730*(myIndex - index);
+						
+						index = myIndex;
+						showButton();	
+						if(!animated) 
+							{
+								animate(offset);
+							}
+					}
+				};
+				slideshow.onmouseover = stop;
+				slideshow.onmouseout = play;
+
+				play();
+
+
+		}//结束window.onload
+	</script>	
+
+
+
+</head>
+<body>
+	<div class="content">
+		<!-- 菜单 -->
+		<div class="menu">
+			<ul class="menu-list">	
+				<li>
+					<a href="http://www.jd.com">家用电器</a>
+					<i>&gt</i>
+					<!-- 家用电器 -->
+					<div class="neirong">
+							<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">家电城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">品牌日
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">智能生活馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东净化馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东帮服务店
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">家电众筹馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>电视&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">合资品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">国产品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">互联网品牌</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>空调&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">壁挂式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">柜式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中央空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">空调配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>洗衣机&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">滚筒洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗烘一体机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">波轮洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗衣机配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>冰箱&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">多门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对开门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">双门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷柜/冰吧</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">酒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冰箱配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨卫大电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">油烟机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气灶</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">烟灶套装</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">消毒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗碗机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">嵌入式厨电</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨房小电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">沸腾小电</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电饭煲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">微波炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电烤箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电磁炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电压力锅</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">豆浆机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">其他厨房电器</a>
+											</span>
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>生活电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">电风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">吸尘器</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">净化器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">扫地机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">加湿器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">清洁机</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>个护健康&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">剃须刀</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">口腔护理</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">美容器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">卷/直发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">理发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">足浴盆</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">按摩器</a>
+											</span>
+
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>家庭影音&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">家庭影院</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">DVD</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电视影音配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>进口电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">进口电器</a>
+											</span>
+											
+											
+										</div>
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">手机、</a>
+					<a href="http://www.jd.com">运营商、</a>
+					<a href="http://www.jd.com">数码</a>
+					<i>&gt</i>
+					<!-- 手机、运营商、数码 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">玩3C
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">手机频道
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">网上营业厅
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">配件城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">影像Club
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">以旧换新
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>手机通讯&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对讲机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">以旧换新</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机维修</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>运营商&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">充话费/对讲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">170选号</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">合约机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">办套餐</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">选号码</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">固话宽带</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">京东通信</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中国移动</a>
+											</span>
+											
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>手机配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机壳</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">贴膜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数据线</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">充电器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机耳机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">创意配件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机饰品</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>摄影摄像&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">摄影</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数码相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">单反相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">拍立得</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">摄像机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>数码配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三脚架/云台</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">相机包</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">滤镜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">闪光灯</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">机身附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">支架</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>影音娱乐&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">耳机/耳麦</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">音箱/音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">便携/无线音箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">收音机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">麦克风</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">专业音频</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>智能设备&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">智能手环</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能手表</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能眼镜</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">智能机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动跟踪器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">健康监测</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能配饰</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>电子教育&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">学生平板</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">点读机/笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">早教益智</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">录音笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电纸书</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电子词典</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">复读机</a>
+											</span>
+
+											
+										</div>
+										
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">电脑、</a>
+					<a href="http://www.jd.com">办公</a>
+					<i>&gt</i>
+					<!-- 电脑、办公 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">家电城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">品牌日
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">智能生活馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东净化馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东帮服务店
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">家电众筹馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>电视&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">合资品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">国产品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">互联网品牌</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>空调&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">壁挂式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">柜式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中央空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">空调配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>洗衣机&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">滚筒洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗烘一体机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">波轮洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗衣机配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>冰箱&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">多门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对开门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">双门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷柜/冰吧</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">酒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冰箱配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨卫大电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">油烟机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气灶</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">烟灶套装</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">消毒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗碗机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">嵌入式厨电</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨房小电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">沸腾小电</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电饭煲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">微波炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电烤箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电磁炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电压力锅</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">豆浆机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">其他厨房电器</a>
+											</span>
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>生活电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">电风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">吸尘器</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">净化器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">扫地机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">加湿器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">清洁机</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>个护健康&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">剃须刀</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">口腔护理</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">美容器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">卷/直发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">理发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">足浴盆</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">按摩器</a>
+											</span>
+
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>家庭影音&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">家庭影院</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">DVD</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电视影音配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>进口电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">进口电器</a>
+											</span>
+											
+											
+										</div>
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">家居、</a>
+					<a href="http://www.jd.com">家具、</a>
+					<a href="http://www.jd.com">家装、</a>
+					<a href="http://www.jd.com">厨具</a>
+					<i>&gt</i>
+					<!-- 家居、家具 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">玩3C
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">手机频道
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">网上营业厅
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">配件城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">影像Club
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">以旧换新
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>手机通讯&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对讲机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">以旧换新</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机维修</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>运营商&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">充话费/对讲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">170选号</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">合约机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">办套餐</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">选号码</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">固话宽带</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">京东通信</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中国移动</a>
+											</span>
+											
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>手机配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机壳</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">贴膜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数据线</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">充电器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机耳机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">创意配件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机饰品</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>摄影摄像&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">摄影</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数码相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">单反相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">拍立得</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">摄像机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>数码配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三脚架/云台</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">相机包</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">滤镜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">闪光灯</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">机身附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">支架</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>影音娱乐&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">耳机/耳麦</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">音箱/音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">便携/无线音箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">收音机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">麦克风</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">专业音频</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>智能设备&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">智能手环</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能手表</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能眼镜</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">智能机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动跟踪器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">健康监测</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能配饰</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>电子教育&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">学生平板</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">点读机/笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">早教益智</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">录音笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电纸书</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电子词典</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">复读机</a>
+											</span>
+
+											
+										</div>
+										
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">男装、</a>
+					<a href="http://www.jd.com">女装、</a>
+					<a href="http://www.jd.com">童装、</a>
+					<a href="http://www.jd.com">内衣</a>
+					<i>&gt</i>
+					<!-- 男装、女装 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">家电城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">品牌日
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">智能生活馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东净化馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东帮服务店
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">家电众筹馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>电视&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">合资品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">国产品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">互联网品牌</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>空调&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">壁挂式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">柜式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中央空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">空调配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>洗衣机&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">滚筒洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗烘一体机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">波轮洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗衣机配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>冰箱&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">多门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对开门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">双门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷柜/冰吧</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">酒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冰箱配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨卫大电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">油烟机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气灶</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">烟灶套装</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">消毒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗碗机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">嵌入式厨电</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨房小电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">沸腾小电</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电饭煲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">微波炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电烤箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电磁炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电压力锅</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">豆浆机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">其他厨房电器</a>
+											</span>
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>生活电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">电风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">吸尘器</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">净化器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">扫地机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">加湿器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">清洁机</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>个护健康&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">剃须刀</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">口腔护理</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">美容器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">卷/直发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">理发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">足浴盆</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">按摩器</a>
+											</span>
+
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>家庭影音&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">家庭影院</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">DVD</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电视影音配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>进口电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">进口电器</a>
+											</span>
+											
+											
+										</div>
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">个护化妆、</a>
+					<a href="http://www.jd.com">清洁用品、</a>
+					<a href="http://www.jd.com">宠物	</a>
+					<i>&gt</i>
+					<!-- 个护化妆 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">玩3C
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">手机频道
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">网上营业厅
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">配件城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">影像Club
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">以旧换新
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>手机通讯&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对讲机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">以旧换新</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机维修</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>运营商&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">充话费/对讲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">170选号</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">合约机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">办套餐</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">选号码</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">固话宽带</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">京东通信</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中国移动</a>
+											</span>
+											
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>手机配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机壳</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">贴膜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数据线</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">充电器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机耳机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">创意配件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机饰品</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>摄影摄像&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">摄影</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数码相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">单反相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">拍立得</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">摄像机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>数码配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三脚架/云台</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">相机包</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">滤镜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">闪光灯</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">机身附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">支架</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>影音娱乐&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">耳机/耳麦</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">音箱/音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">便携/无线音箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">收音机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">麦克风</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">专业音频</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>智能设备&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">智能手环</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能手表</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能眼镜</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">智能机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动跟踪器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">健康监测</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能配饰</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>电子教育&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">学生平板</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">点读机/笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">早教益智</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">录音笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电纸书</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电子词典</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">复读机</a>
+											</span>
+
+											
+										</div>
+										
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">鞋靴、</a>
+					<a href="http://www.jd.com">箱包、</a>
+					<a href="http://www.jd.com">珠宝、</a>
+					<a href="http://www.jd.com">奢侈品</a>
+					<i>&gt</i>
+					<!-- 鞋靴、箱包 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">家电城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">品牌日
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">智能生活馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东净化馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东帮服务店
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">家电众筹馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>电视&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">合资品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">国产品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">互联网品牌</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>空调&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">壁挂式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">柜式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中央空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">空调配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>洗衣机&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">滚筒洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗烘一体机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">波轮洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗衣机配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>冰箱&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">多门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对开门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">双门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷柜/冰吧</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">酒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冰箱配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨卫大电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">油烟机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气灶</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">烟灶套装</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">消毒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗碗机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">嵌入式厨电</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨房小电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">沸腾小电</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电饭煲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">微波炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电烤箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电磁炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电压力锅</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">豆浆机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">其他厨房电器</a>
+											</span>
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>生活电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">电风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">吸尘器</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">净化器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">扫地机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">加湿器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">清洁机</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>个护健康&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">剃须刀</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">口腔护理</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">美容器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">卷/直发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">理发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">足浴盆</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">按摩器</a>
+											</span>
+
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>家庭影音&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">家庭影院</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">DVD</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电视影音配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>进口电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">进口电器</a>
+											</span>
+											
+											
+										</div>
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">运动户外、</a>
+					<a href="http://www.jd.com">钟表</a>
+					<i>&gt</i>
+					<!-- 运动户外 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">玩3C
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">手机频道
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">网上营业厅
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">配件城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">影像Club
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">以旧换新
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>手机通讯&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对讲机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">以旧换新</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机维修</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>运营商&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">充话费/对讲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">170选号</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">合约机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">办套餐</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">选号码</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">固话宽带</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">京东通信</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中国移动</a>
+											</span>
+											
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>手机配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机壳</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">贴膜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数据线</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">充电器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机耳机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">创意配件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机饰品</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>摄影摄像&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">摄影</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数码相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">单反相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">拍立得</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">摄像机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>数码配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三脚架/云台</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">相机包</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">滤镜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">闪光灯</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">机身附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">支架</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>影音娱乐&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">耳机/耳麦</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">音箱/音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">便携/无线音箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">收音机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">麦克风</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">专业音频</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>智能设备&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">智能手环</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能手表</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能眼镜</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">智能机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动跟踪器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">健康监测</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能配饰</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>电子教育&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">学生平板</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">点读机/笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">早教益智</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">录音笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电纸书</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电子词典</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">复读机</a>
+											</span>
+
+											
+										</div>
+										
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">汽车、</a>
+					<a href="http://www.jd.com">汽车用品</a>
+					<i>&gt</i>
+					<!-- 汽车 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">家电城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">品牌日
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">智能生活馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东净化馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东帮服务店
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">家电众筹馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>电视&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">合资品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">国产品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">互联网品牌</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>空调&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">壁挂式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">柜式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中央空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">空调配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>洗衣机&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">滚筒洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗烘一体机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">波轮洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗衣机配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>冰箱&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">多门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对开门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">双门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷柜/冰吧</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">酒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冰箱配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨卫大电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">油烟机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气灶</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">烟灶套装</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">消毒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗碗机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">嵌入式厨电</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨房小电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">沸腾小电</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电饭煲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">微波炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电烤箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电磁炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电压力锅</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">豆浆机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">其他厨房电器</a>
+											</span>
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>生活电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">电风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">吸尘器</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">净化器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">扫地机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">加湿器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">清洁机</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>个护健康&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">剃须刀</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">口腔护理</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">美容器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">卷/直发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">理发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">足浴盆</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">按摩器</a>
+											</span>
+
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>家庭影音&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">家庭影院</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">DVD</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电视影音配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>进口电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">进口电器</a>
+											</span>
+											
+											
+										</div>
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">母婴、</a>
+					<a href="http://www.jd.com">玩具乐器</a>
+					<i>&gt</i>
+					<!-- 母婴 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">玩3C
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">手机频道
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">网上营业厅
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">配件城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">影像Club
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">以旧换新
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>手机通讯&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对讲机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">以旧换新</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机维修</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>运营商&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">充话费/对讲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">170选号</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">合约机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">办套餐</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">选号码</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">固话宽带</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">京东通信</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中国移动</a>
+											</span>
+											
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>手机配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机壳</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">贴膜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数据线</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">充电器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机耳机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">创意配件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机饰品</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>摄影摄像&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">摄影</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数码相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">单反相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">拍立得</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">摄像机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>数码配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三脚架/云台</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">相机包</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">滤镜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">闪光灯</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">机身附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">支架</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>影音娱乐&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">耳机/耳麦</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">音箱/音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">便携/无线音箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">收音机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">麦克风</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">专业音频</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>智能设备&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">智能手环</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能手表</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能眼镜</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">智能机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动跟踪器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">健康监测</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能配饰</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>电子教育&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">学生平板</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">点读机/笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">早教益智</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">录音笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电纸书</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电子词典</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">复读机</a>
+											</span>
+
+											
+										</div>
+										
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">食品、</a>
+					<a href="http://www.jd.com">酒类、</a>
+					<a href="http://www.jd.com">生鲜、</a>
+					<a href="http://www.jd.com">特产</a>
+					<i>&gt</i>
+					<!-- 食品、酒类 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">家电城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">品牌日
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">智能生活馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东净化馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东帮服务店
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">家电众筹馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>电视&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">合资品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">国产品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">互联网品牌</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>空调&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">壁挂式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">柜式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中央空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">空调配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>洗衣机&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">滚筒洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗烘一体机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">波轮洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗衣机配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>冰箱&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">多门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对开门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">双门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷柜/冰吧</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">酒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冰箱配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨卫大电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">油烟机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气灶</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">烟灶套装</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">消毒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗碗机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">嵌入式厨电</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨房小电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">沸腾小电</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电饭煲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">微波炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电烤箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电磁炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电压力锅</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">豆浆机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">其他厨房电器</a>
+											</span>
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>生活电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">电风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">吸尘器</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">净化器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">扫地机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">加湿器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">清洁机</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>个护健康&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">剃须刀</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">口腔护理</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">美容器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">卷/直发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">理发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">足浴盆</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">按摩器</a>
+											</span>
+
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>家庭影音&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">家庭影院</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">DVD</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电视影音配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>进口电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">进口电器</a>
+											</span>
+											
+											
+										</div>
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">医药保健</a>
+					<i>&gt</i>
+					<!-- 医疗保健 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">玩3C
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">手机频道
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">网上营业厅
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">配件城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">影像Club
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">以旧换新
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>手机通讯&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对讲机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">以旧换新</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机维修</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>运营商&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">充话费/对讲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">170选号</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">合约机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">办套餐</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">选号码</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">固话宽带</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">京东通信</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中国移动</a>
+											</span>
+											
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>手机配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机壳</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">贴膜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数据线</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">充电器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机耳机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">创意配件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机饰品</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>摄影摄像&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">摄影</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数码相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">单反相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">拍立得</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">摄像机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>数码配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三脚架/云台</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">相机包</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">滤镜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">闪光灯</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">机身附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">支架</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>影音娱乐&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">耳机/耳麦</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">音箱/音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">便携/无线音箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">收音机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">麦克风</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">专业音频</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>智能设备&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">智能手环</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能手表</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能眼镜</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">智能机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动跟踪器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">健康监测</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能配饰</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>电子教育&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">学生平板</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">点读机/笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">早教益智</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">录音笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电纸书</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电子词典</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">复读机</a>
+											</span>
+
+											
+										</div>
+										
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">图书、</a>
+					<a href="http://www.jd.com">音像、</a>
+					<a href="http://www.jd.com">电子书</a>
+					<i>&gt</i>
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">家电城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">品牌日
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">智能生活馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东净化馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东帮服务店
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">家电众筹馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>电视&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">合资品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">国产品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">互联网品牌</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>空调&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">壁挂式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">柜式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中央空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">空调配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>洗衣机&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">滚筒洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗烘一体机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">波轮洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗衣机配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>冰箱&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">多门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对开门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">双门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷柜/冰吧</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">酒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冰箱配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨卫大电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">油烟机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气灶</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">烟灶套装</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">消毒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗碗机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">嵌入式厨电</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨房小电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">沸腾小电</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电饭煲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">微波炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电烤箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电磁炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电压力锅</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">豆浆机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">其他厨房电器</a>
+											</span>
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>生活电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">电风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">吸尘器</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">净化器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">扫地机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">加湿器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">清洁机</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>个护健康&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">剃须刀</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">口腔护理</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">美容器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">卷/直发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">理发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">足浴盆</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">按摩器</a>
+											</span>
+
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>家庭影音&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">家庭影院</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">DVD</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电视影音配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>进口电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">进口电器</a>
+											</span>
+											
+											
+										</div>
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">彩票、</a>
+					<a href="http://www.jd.com">旅行、</a>
+					<a href="http://www.jd.com">充值、</a>
+					<a href="http://www.jd.com">票务</a>
+					<i>&gt</i>
+					<!-- 彩票、旅行 -->
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">玩3C
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">手机频道
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">网上营业厅
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">配件城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">影像Club
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">以旧换新
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>手机通讯&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对讲机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">以旧换新</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机维修</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>运营商&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">充话费/对讲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">170选号</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">合约机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">办套餐</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">选号码</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">固话宽带</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">京东通信</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中国移动</a>
+											</span>
+											
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>手机配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">手机壳</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">贴膜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数据线</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">充电器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机耳机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">创意配件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">手机饰品</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>摄影摄像&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">摄影</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">数码相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">单反相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">拍立得</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动相机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">摄像机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>数码配件&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">存储卡</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三脚架/云台</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">相机包</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">滤镜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">闪光灯</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">机身附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">镜头附件</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">支架</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>影音娱乐&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">耳机/耳麦</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">音箱/音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">便携/无线音箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">收音机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">麦克风</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">专业音频</a>
+											</span>
+											
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>智能设备&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">智能手环</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能手表</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能眼镜</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">智能机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">运动跟踪器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">健康监测</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">智能配饰</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>电子教育&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">学生平板</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">点读机/笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">早教益智</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">录音笔</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电纸书</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电子词典</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">复读机</a>
+											</span>
+
+											
+										</div>
+										
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				<li>
+					<a href="http://www.jd.com">理财、</a>
+					<a href="http://www.jd.com">众筹、</a>
+					<a href="http://www.jd.com">白条、</a>
+					<a href="http://www.jd.com">保险</a>
+					<i>&gt</i>
+					<div class="neirong">
+						<div class="neirong-nav-left">
+								<div class="nr-nav-left-t">
+									<div class="nr-nav-t-top">
+										<span>	
+											<a href="http://www.jd.com">家电城
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">品牌日
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">智能生活馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东净化馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">京东帮服务店
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+										<span>	
+											<a href="http://www.jd.com">家电众筹馆
+	       									<i>&gt</i>
+	       									</a>
+										</span>	
+									</div>
+										<!--  -->
+										<div class="nr-nav-t-top1">
+											<strong>电视&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">合资品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">国产品牌</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">互联网品牌</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>空调&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">壁挂式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">柜式空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">中央空调</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">空调配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>洗衣机&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">滚筒洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗烘一体机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">波轮洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你洗衣机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗衣机配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>冰箱&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">多门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">对开门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">三门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">双门</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷柜/冰吧</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">酒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冰箱配件</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨卫大电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">油烟机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气灶</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">烟灶套装</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">消毒柜</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">洗碗机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">燃气热水器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">嵌入式厨电</a>
+											</span>
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>厨房小电&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">沸腾小电</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电饭煲</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">微波炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电烤箱</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电磁炉</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电压力锅</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">豆浆机</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">其他厨房电器</a>
+											</span>
+
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>生活电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">电风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">冷风扇</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">吸尘器</a>
+											</span>
+
+											<span>
+												<a href="http://www.jd.com">净化器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">扫地机器人</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">加湿器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">清洁机</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>个护健康&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">剃须刀</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">口腔护理</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">美容器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">卷/直发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">理发器</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">足浴盆</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">按摩器</a>
+											</span>
+
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>家庭影音&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">家庭影院</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">迷你音响</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">DVD</a>
+											</span>
+											<span>
+												<a href="http://www.jd.com">电视影音配件</a>
+											</span>
+											
+										</div>
+										<div class="nr-nav-t-top1">
+											<strong>进口电器&nbsp &gt</strong>
+											<span>
+												<a href="http://www.jd.com">进口电器</a>
+											</span>
+											
+											
+										</div>
+									
+								</div>
+							</div>
+							<div class="neirong-nav-right">
+								<a href="http://www.jd.com">
+									<img src="广告.jpg" alt="广告">
+								</a>
+							</div>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+		<!-- 轮播 -->
+		<div id="slideshow">
+	<div id="list" style="left:-730px">
+		<a href="http://www.jd.com">
+			<img src="轮播5.jpg" alt="">
+		</a>	
+		<a href="http://www.jd.com">
+			<img src="轮播1.jpg" alt="">
+		</a>	
+		<a href="http://www.jd.com">
+			<img src="轮播2.jpg" alt="">
+		</a>
+		<a href="http://www.jd.com">
+			<img src="轮播3.jpg" alt="">
+		</a>
+		<a href="http://www.jd.com">
+			<img src="轮播4.jpg" alt="">
+		</a>
+		<a href="http://www.jd.com">
+			<img src="轮播5.jpg" alt="">
+		</a>
+		<a href="http://www.jd.com">
+			<img src="轮播1.jpg" alt="">
+		</a>
+	</div>
+	<div id="buttons">
+		<span index="1" class="on">1</span>
+		<span index="2">2</span>
+		<span index="3">3</span>
+		<span index="4">4</span>
+		<span index="5">5</span>
+	</div>
+		<a href="javascript:;" class="arrow" id="prev">&lt;</a>
+		<a href="javascript:;" class="arrow" id="next">&gt;</a>
+	</div>
+		<!-- 新闻 -->
+		<div class="news">
+			
+		</div>
+	</div>
+</body>
+</html>

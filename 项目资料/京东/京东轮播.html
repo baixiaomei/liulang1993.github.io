@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>京东轮播</title>
+	<style type="text/css">
+
+	#slideshow{
+		margin: 0 auto;
+		width: 720px;
+		height: 450px;
+		overflow: hidden;
+		position: relative;
+	}
+	#list{
+		width: 5200px;
+		height: 455px;
+		position: absolute;
+		z-index: 1;
+	}
+	#list img{
+		float: left;
+		height: 455px;
+		width: 720px;
+	}
+	#buttons{
+		position: absolute;
+		height: 10px;
+		width: 200px;
+		z-index: 2;
+		bottom: 20px;
+		left: 300px;
+	}
+	#buttons span{
+		cursor: pointer;
+		float: left;
+		bottom: 1px solid #fff;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		border-radius: 10px;
+		background-color: #bbb;
+		margin-right: 5px;
+	}
+	#buttons .on{
+		background-color: red;
+	}
+	.arrow{
+		cursor: pointer;
+		display: none;
+		line-height: 40px;
+		text-align: center;
+		font-size: 30px;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		z-index:2;
+		top: 200px;
+		background-color: rgba(0,0,0,.3);
+		color: #fff;
+	}
+	.arrow:hover{
+		background-color: rgba(0,0,0,.7);
+	}
+	#slideshow:hover .arrow{
+		display: block;
+	}
+	#prev{
+		left: 20px;
+	}
+	#next{
+		right: 20px;
+	}
+
+	</style>
+	<script type="text/javascript">
+
+		window.onload=function(){
+			var slideshow = document.getElementById('slideshow')
+			var list = document.getElementById('list')
+			var buttons = document.getElementById('buttons').getElementsByTagName('span')
+			var prev = document.getElementById('prev')
+			var next = document.getElementById('next')
+			//每次等到图片显示完毕以后才能再次点击的优化
+			var animated = false;
+			var timer;
+
+			// 小圆点显示提示
+			var index = 1;
+			// 小圆点操作函数
+			function showButton(){
+				for (var i = 0; i < buttons.length; i++) {
+						if (buttons[i].className == 'on') {
+							buttons[i].className = '';
+							break;
+						};
+					};	
+
+				buttons[index - 1].className = 'on';
+			}
+
+
+
+
+
+
+			// 箭头操作函数
+			function animate(offset){
+				animated =true;
+				var newLeft=parseInt(list.style.left)+offset;
+				
+				var time = 500;// 图片位移时间
+				var interval = 10;//图片位移间隔时间；
+				var speed = offset/(time/interval);//每次的位移量
+				// 什么情况下才做位移
+				function go(){
+					if( (speed<0 && parseInt(list.style.left)>newLeft)||(speed>0 && parseInt(list.style.left)<newLeft)) {
+						list.style.left=parseInt(list.style.left)+speed+'px';
+						setTimeout(go,interval);
+
+					}
+
+					else{
+						animated  = false;
+
+						list.style.left = newLeft +'px';
+						if(newLeft>-720){
+							list.style.left=-3600+'px';
+						}
+						if(newLeft<-3600){
+							list.style.left=-720+'px';
+						}
+					}
+				}
+
+				go();
+
+	
+			}	
+
+
+			//自动播放
+			function play(){
+				timer = setInterval(function(){
+					next.onclick();
+				},3000);
+			}
+			// 停止播放
+			function stop(){
+				clearInterval(timer);
+			}
+
+
+			// 添加事件绑定(一下可以合并成一个参数，animate)
+			/*
+				next.onclick = function(){
+					list.style.left = parseInt(list.style.left) - 600 +'px';
+				}
+				prev.onclick = function(){
+					list.style.left = parseInt(list.style.left) + 600 +'px';
+				}
+			*/
+			// 箭头事件简写如下
+				next.onclick = function(){
+					if (index == 5)
+					{
+						index = 1;
+					}
+					else{
+						index += 1;
+					}
+
+					showButton();//小圆点移动
+					if(!animated)
+						{
+							animate(-720);
+						}//图片移动
+				}
+				prev.onclick = function(){
+					if (index == 1)
+					{
+						index = 5;
+					}
+					else{
+						index -= 1;
+					}
+					showButton();//小圆点移动
+					if(!animated)
+						{
+							animate(720);//图片移动	
+						} 
+				}
+
+				// 按钮事件
+				for (var i = 0; i < buttons.length; i++) {
+						// 如果按钮就在当前图片，再次点击当前图片要保证光标不会跑动，仍然留在当前left.
+						buttons[i].onclick= function(){
+						if (this.className == 'on') {
+							return;
+						};	
+
+
+						var myIndex = parseInt(this.getAttribute('index'))//dom自定义属性获取	
+						var offset = -720*(myIndex - index);
+						
+						index = myIndex;
+						showButton();	
+						if(!animated) 
+							{
+								animate(offset);
+							}
+					}
+				};
+				slideshow.onmouseover = stop;
+				slideshow.onmouseout = play;
+
+				play();
+
+
+		}//结束window.onload
+	</script>
+</head>
+<body>
+	<div id="slideshow">
+	<div id="list" style="left:-720px">
+		<a href="http://www.jd.com">
+			<img src="轮播5.jpg" alt="">
+		</a>	
+		<a href="http://www.jd.com">
+			<img src="轮播1.jpg" alt="">
+		</a>	
+		<a href="http://www.jd.com">
+			<img src="轮播2.jpg" alt="">
+		</a>
+		<a href="http://www.jd.com">
+			<img src="轮播3.jpg" alt="">
+		</a>
+		<a href="http://www.jd.com">
+			<img src="轮播4.jpg" alt="">
+		</a>
+		<a href="http://www.jd.com">
+			<img src="轮播5.jpg" alt="">
+		</a>
+		<a href="http://www.jd.com">
+			<img src="轮播1.jpg" alt="">
+		</a>
+	</div>
+	<div id="buttons">
+		<span index="1" class="on">1</span>
+		<span index="2">2</span>
+		<span index="3">3</span>
+		<span index="4">4</span>
+		<span index="5">5</span>
+	</div>
+		<a href="javascript:;" class="arrow" id="prev">&lt;</a>
+		<a href="javascript:;" class="arrow" id="next">&gt;</a>
+	</div>
+</body>
+</html>

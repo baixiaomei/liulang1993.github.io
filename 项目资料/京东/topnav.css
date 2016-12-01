@@ -1,0 +1,47 @@
+*{margin: 0;
+padding: 0;}
+.topnav-right{
+	float: right;
+	width: 850px;
+	height: 30px;
+}
+
+#hongzi{color: red;}		
+.xl{
+		list-style:none;
+}
+.xl li{float: left;
+	/*不要在LI给定宽度， 在A标签里面直接给宽度就行*/
+		text-align: center;
+		line-height: 30px;
+		position: relative;
+}
+.xl li a{
+		color: #6c6c6c;
+		font-size: 12px;
+		width: 80px;
+		padding: 0 2px;
+		text-decoration: none;
+		display: block;
+		}
+.xl li a:hover{
+		background-color: black;
+		color:white;
+}
+.xl_1{
+		position: absolute;
+		display: none;
+		left: 0px;
+		top: 30px;
+		list-style: none;
+}
+.xl_1 li{
+		float: none;
+		background-color: #eee;
+}
+.xl_1 li a:hover{
+		background-color: red;
+}
+.xl li:hover .xl_1{
+		display: block;
+}	
