@@ -248,7 +248,7 @@ a.external:hover {
     margin-bottom: 10px;
   }
 }
-.index-wrapper .title:hover, .index-wrapper .jd {
+.index-wrapper .title:hover, .index-wrapper .jd:hover {
   color: #e50053;
   text-decoration: none;
 }
