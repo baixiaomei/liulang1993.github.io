@@ -220,7 +220,7 @@ a.external:hover {
 .index-wrapper .artical-list li {
   margin-bottom: 70px;
 }
-.index-wrapper .title {
+.index-wrapper .title, .index-wrapper .title a {
   display: block;
   font-size: 22px;
   margin-bottom: 15px;
@@ -232,12 +232,12 @@ a.external:hover {
   color: #444;
 }
 @media screen and (max-width: 767px) {
-  .index-wrapper .title {
+  .index-wrapper .title, .index-wrapper .title a{
     font-size: 20px;
     margin-bottom: 10px;
   }
 }
-.index-wrapper .title:hover {
+.index-wrapper .title:hover, .index-wrapper .title a:hover {
   color: #e50053;
   text-decoration: none;
 }
