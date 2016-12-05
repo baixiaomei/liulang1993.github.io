@@ -239,17 +239,16 @@ a.external:hover {
   font-weight: bold;
   margin-bottom: 25px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #eee;
   color: #444;
 }
 
 @media screen and (max-width: 767px) {
-  .index-wrapper .title {
+  .index-wrapper .title, .index-wrapper .jd {
     font-size: 20px;
     margin-bottom: 10px;
   }
 }
-.index-wrapper .title:hover {
+.index-wrapper .title:hover, .index-wrapper .jd {
   color: #e50053;
   text-decoration: none;
 }
