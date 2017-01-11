@@ -1,0 +1,294 @@
+@charset "utf-8";
+
+@h6:60px;
+@w11:1100px;
+@h31:31px;
+@w302:302px;
+@w740:740px;
+@w272:272px;
+/*底部*/
+#footer{
+	height: 430px;
+	background-color: #F0F0F0;
+}
+.footer-main{
+	position: relative;
+	margin: 0 auto;
+	width: @w11;
+	height: 430px;
+	&-blank{
+		height: 30px;
+	}
+	&-title{
+		height: 44px;
+		background-color: #fff;
+		border-top: 2px solid #000;
+		span{
+			float: left;
+		}
+		.dycurrent{
+			background-color: #000;
+			color: #fff;
+			&:hover{
+				text-decoration:none;
+			};
+		}
+		a{
+			display: inline-block;
+			height: 44px;
+			line-height:44px;
+			font-size: 14px;
+			color: #000;
+			padding: 0 20px;
+			text-align: center;
+			text-decoration: none;
+			&:hover{
+				text-decoration:underline;
+			};
+		}
+		.set{
+			width: 30px;
+			float: right;
+			height: 30px;
+			margin: 6px 10px;
+			border-radius: 5px;
+			background-image: url(image/set.png);
+		}
+	}
+}
+.footer-main-nav{
+	margin-top: 20px;
+	width: @w11;
+	height: 302px;
+}
+.footer-main-list{
+	width: 207px;
+	height: 302px;
+	background-color: #fff;
+	float: left;
+	margin-right: 13px;
+	border-radius: 5px;
+	img{
+		margin: 10px;
+		&:hover{
+			opacity:0.8;
+		};
+	}
+	.name{
+		height: 20px;
+		line-height: 20px;
+		a{
+			color: #000;
+			text-decoration: none;
+			font-size: 13px;
+			&:hover{
+				text-decoration:underline;
+			};
+		}	
+	}
+	p{
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		font-size: 12px;
+		a{
+			text-decoration: none;
+			&:hover{
+				text-decoration:underline;
+			};
+		}
+
+	}
+	.more{
+		height: 25px;
+		a{
+			width: 70px;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+			text-decoration: none;
+			border-radius: 3px;
+			color: #fff;
+			font-size: 13px;
+			background-color: black;
+			float: left;
+			&:hover{
+				text-decoration:underline;
+			};
+		}
+	}
+}
+
+/*links*/
+#links{
+	height: 400px;
+	background-color: #fff;
+}
+.links-main{
+	margin: 0 auto;
+	width: @w11;
+	height: 400px;
+}
+.links-main-top{
+	float: left;
+	width: @w11;
+	height: 210px;
+	margin-top: 20px;
+}
+.links-main-left{
+	width: 520px;
+	height: 190px;
+	float: left;
+	margin-top: 10px;
+}
+.links-list{
+	width: 120px;
+	height: 190px;
+	line-height: 20px;
+	float: left;
+	list-style: none;
+	margin-left: 10px;
+	h2{
+		font-size: 12px;
+	}
+	a{
+		text-decoration: none;
+		font-size: 12px;
+		color: #999;
+		&:hover{
+			color:#f60;
+			}
+	}
+}
+.links-main-right{
+	width: 430px;
+	height: 190px;
+	float: right;
+	margin-top: 10px;
+	span{
+		display: block;
+		width: 70px;
+		height: 190px;
+		font-size: 12px;
+		color: #999;
+		float: left;
+		text-align: center;
+	}
+	a{
+		display: block;
+		width: 360px;
+		height: 190px;
+		float: right;
+	}
+}
+.conpany{
+	width: @w11;
+	height: 70px;
+	float: left;
+	margin-top: 10px;
+	border-top: 1px dashed #ccc;
+	border-bottom: 1px dashed #ccc;
+	a{
+		font-size: 12px;
+		color: #999;
+		float: left;
+		margin: 10px 0 10px -1px;
+		border-left: 1px solid #ccc;
+		padding:0 12px;
+		text-decoration: none;
+		&:hover{
+			color:#f60;	
+		};
+	}
+	.noneborder{
+		border-left: none;
+	}
+}
+.copyright{
+	float: left;
+	width: @w11;
+	height: 70px;
+}
+.copyright-left{
+	width: 220px;
+	height: 40px;
+	margin-top: 15px;
+	float: left;
+	span{
+		padding-left: 10px;
+		font-size: 12px;
+		color: #999;
+		float: left;
+	}
+	a{
+		width: 16px;
+		height: 16px;
+		i{
+			width: 16px;
+			height: 16px;
+			float: left;
+			margin-left: 5px;
+
+		}
+		.sina{
+			background-image: url(image/linkico.gif);
+		}
+		.renren{
+			background-image: url(image/linkico.gif);
+			background-position: 0 -64px;
+		}
+		.kongjian{
+			background-image: url(image/linkico.gif);
+			background-position: 0 -160px;
+		
+		}
+		.weibo{
+			background-image: url(image/linkico.gif);
+			background-position: 0 -128px;
+		}
+		.douban{
+			background-image: url(image/linkico.gif);
+			background-position: 0 -192px;
+
+		}
+		
+	}
+}
+.copyright-right{
+	width: 450px;
+	height: 40px;
+	float: right;
+	margin-top: 15px;
+}
+.introduction{
+	width: 410px;
+	height: 40px;
+	font-size: 12px;
+	color: #999;
+	float: left;
+	a{
+		color: #999;
+		text-decoration: none;
+	}
+	.int1{
+		float: left;
+		display: inline-block;
+		width: 280px;
+		height: 23px;
+		line-height: 23px;
+	}
+	.int2{
+		float: left;
+		display: inline-block;
+		width: 400px;
+		height: 15px;
+		line-height: 15px;
+	}
+	strong{
+		margin-left: 10px;
+		width: 120px;
+		height: 23px;
+		display: inline-block;
+		background-image: url(image/shui.png);
+	}
+}

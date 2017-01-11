@@ -1,0 +1,122 @@
+@charset "utf-8";
+/*导航区*/
+#nav {
+  height: 31px;
+  background-color: #F0F0F0;
+  border-bottom: 1px solid #ccc;
+}
+.nav-main {
+  position: relative;
+  margin: 0 auto;
+  width: 1100px;
+  height: 31px;
+}
+.nav-main .hot {
+  color: #f60;
+}
+.nav-main-list {
+  margin-left: 100px;
+  width: 450px;
+  height: 31px;
+  float: left;
+}
+.nav-main-list a {
+  display: block;
+  height: 31px;
+  float: left;
+  font-size: 14px;
+  color: black;
+  margin: 0 15px;
+  line-height: 31px;
+  text-align: center;
+  text-decoration: none;
+}
+.nav-main-list a:hover {
+  color: #f60;
+}
+.nav-main-vip {
+  width: 310px;
+  height: 31px;
+  float: right;
+}
+.vip-left {
+  float: left;
+  width: 100px;
+  height: 31px;
+  text-align: center;
+  line-height: 31px;
+}
+.vip-left .icon3 {
+  display: block;
+  width: 31px;
+  height: 31px;
+  float: left;
+  background-image: url(image/icospr.png);
+  background-position: -70px -45px;
+}
+.vip-left a {
+  display: block;
+  float: left;
+  width: 60px;
+  height: 31px;
+  font-size: 13px;
+  text-decoration: none;
+  text-align: left;
+}
+.vip-left a:hover {
+  color: #f60;
+}
+.vip-middle {
+  float: left;
+  width: 100px;
+  height: 31px;
+  text-align: center;
+  line-height: 31px;
+}
+.vip-middle .icon3 {
+  display: block;
+  width: 31px;
+  height: 31px;
+  float: left;
+  background-image: url(image/icospr.png);
+  background-position: -20px -45px;
+}
+.vip-middle a {
+  display: block;
+  float: left;
+  width: 60px;
+  height: 31px;
+  font-size: 13px;
+  text-decoration: none;
+  text-align: left;
+}
+.vip-middle a:hover {
+  color: #f60;
+}
+.vip-right {
+  float: right;
+  width: 100px;
+  height: 31px;
+  text-align: center;
+  line-height: 31px;
+}
+.vip-right .icon3 {
+  display: block;
+  width: 30px;
+  height: 31px;
+  float: left;
+  background-image: url(image/icospr.png);
+  background-position: -45px -45px;
+}
+.vip-right a {
+  display: block;
+  float: right;
+  width: 70px;
+  height: 31px;
+  font-size: 13px;
+  text-decoration: none;
+  text-align: right;
+}
+.vip-right a:hover {
+  color: #f60;
+}

@@ -1,0 +1,152 @@
+/*头部区域*/
+@h6:60px;
+@w11:1100px;
+@h31:31px;
+@w302:302px;
+@w740:740px;
+@w272:272px;
+#header{
+  height: @h6;
+  background-color: #F57614;
+  border-bottom: #CC5A18;
+}
+
+.header-main{
+  margin: 0 auto;
+  width: @w11;
+  height:@h6;
+  position: relative;
+
+  &-logo{
+  float: left;  
+  width: 200px;
+  height: @h6;
+  background-image: url(image/logo.png);
+    }
+    &-focus{
+  float: left;
+  width: 185px;
+  height: @h6;
+  text-align: center;
+  line-height: @h6;
+    a{
+      float: left;
+      display: block;
+      width: 90px;
+      height: @h6;
+      color: #fff;
+      text-decoration: none;
+    }
+    }
+
+    &-list{
+  float: left;
+  width: 270px;
+  height: @h6;
+    ul{
+      margin:15px 0 0 15px;
+      width: 242px;
+      height: 30px;
+      border-radius: 3px;
+      list-style: none;
+      text-align: center;
+      line-height: 30px;
+      border: 1px solid #D65C15;
+      li{
+        float: left;
+        a{
+          display: block;
+          float: left;
+          width: 59px;
+          height: 30px;
+          font-size: 14px;
+          color: #fff;
+          text-decoration: none;
+          border-right: 1px solid #D65C15;
+          &:hover{
+            background-color:#D65C15;
+          }
+        }
+        &:last-child a{
+          width: 62px;
+          border-right: none;
+        }
+      }
+    }
+  }
+
+    &-search{
+  float: left;
+  margin-left: 10px;
+  border-radius: 3px;
+  background-color: #fff;
+  width: 230px;
+  height: 30px;
+  margin-top: 15px;
+  border: 1px solid #D65C15;  
+  }
+} 
+.focus-current{
+  background-color:  #DB6600;
+}
+#search{
+  width: 230px;
+  height: 30px;
+  
+  .icon{
+    float: left;
+    width: 30px;
+    height: 27px;
+    border: none;
+    background-image: url(image/icospr.png);
+    background-position: 5px -45px;
+  }
+  .keyword{
+    float: right;
+    width: 190px;
+    height: 27px;
+    border: none;
+  }
+}
+.header-main-login{
+  float: left;
+  margin-left: 10px;
+  width: 190px;
+  height: 30px;
+  margin-top: 15px;
+  background-color: #CC691D;
+  border: 1px solid #B25415;
+  border-radius: 3px;
+  a{
+    display: block;
+    width: 63px;
+    height: 30px;
+    float: left;
+    font-size: 13px;
+    color: #fff;
+    line-height: 30px;
+    text-decoration: none;
+    text-align: center;
+    border-right: 1px solid  #B25415;
+    &:hover{
+      background-color:#D65C15;
+    }
+  } 
+  .icon1{
+    float: left;
+    background-image: url(image/qq.png);
+    background-position: -20px 28px;
+    display: block;
+    width: 31px;
+    height:29px;
+  }
+  .icon2{
+    float: left;
+    background-image: url(image/qq.png);
+    background-position: 3px 28px;
+    display: block;
+    width: 30px;
+    height:29px;
+    border-right: none;
+  }
+}

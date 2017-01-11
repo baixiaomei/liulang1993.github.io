@@ -7,21 +7,21 @@
 
 	#slideshow{
 		margin: 0 auto;
-		width: 720px;
-		height: 450px;
+		width: 740px;
+		height: 170px;
 		overflow: hidden;
 		position: relative;
 	}
 	#list{
 		width: 5200px;
-		height: 455px;
+		height: 170px;
 		position: absolute;
 		z-index: 1;
 	}
 	#list img{
 		float: left;
-		height: 455px;
-		width: 720px;
+		height: 170px;
+		width: 740px;
 	}
 	#buttons{
 		position: absolute;
@@ -125,11 +125,11 @@
 						animated  = false;
 
 						list.style.left = newLeft +'px';
-						if(newLeft>-720){
-							list.style.left=-3600+'px';
+						if(newLeft>-740){
+							list.style.left=-3700+'px';
 						}
-						if(newLeft<-3600){
-							list.style.left=-720+'px';
+						if(newLeft<-3700){
+							list.style.left=-740+'px';
 						}
 					}
 				}
@@ -174,7 +174,7 @@
 					showButton();//小圆点移动
 					if(!animated)
 						{
-							animate(-720);
+							animate(-740);
 						}//图片移动
 				}
 				prev.onclick = function(){
@@ -188,7 +188,7 @@
 					showButton();//小圆点移动
 					if(!animated)
 						{
-							animate(720);//图片移动	
+							animate(740);//图片移动	
 						} 
 				}
 
@@ -202,7 +202,7 @@
 
 
 						var myIndex = parseInt(this.getAttribute('index'))//dom自定义属性获取	
-						var offset = -720*(myIndex - index);
+						var offset = -740*(myIndex - index);
 						
 						index = myIndex;
 						showButton();	
@@ -223,27 +223,27 @@
 </head>
 <body>
 	<div id="slideshow">
-	<div id="list" style="left:-720px">
+	<div id="list" style="left:-740px">
 		<a href="http://www.jd.com">
-			<img src="轮播5.jpg" alt="">
+			<img src="image/slideshow5.jpg" alt="slideshow5">
 		</a>	
 		<a href="http://www.jd.com">
-			<img src="轮播1.jpg" alt="">
+			<img src="image/slideshow1.jpg" alt="slideshow1">
 		</a>	
 		<a href="http://www.jd.com">
-			<img src="轮播2.jpg" alt="">
+			<img src="image/slideshow2" alt="slideshow2">
 		</a>
 		<a href="http://www.jd.com">
-			<img src="轮播3.jpg" alt="">
+			<img src="image/slideshow3" alt="slideshow3">
 		</a>
 		<a href="http://www.jd.com">
-			<img src="轮播4.jpg" alt="">
+			<img src="image/slideshow4.jpg" alt="slideshow4">
 		</a>
 		<a href="http://www.jd.com">
-			<img src="轮播5.jpg" alt="">
+			<img src="image/slideshow5.jpg" alt="slideshow5">
 		</a>
 		<a href="http://www.jd.com">
-			<img src="轮播1.jpg" alt="">
+			<img src="image/slideshow1.jpg" alt="slideshow1">
 		</a>
 	</div>
 	<div id="buttons">
