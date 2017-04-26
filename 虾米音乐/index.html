@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>虾</title>
+	<link rel="stylesheet" type="text/css" href="layout.css">
+	<script type="text/javascript" src="jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="xuanxiang.js"></script>
+
+
+</head>
+<body>
+	<!-- header开始 -->
+	<div id="header">
+		<div class="header-main">
+			<div class="header-main-nav">
+				<a href="#" class="logo"></a>
+				<a href="#" class="discover">发现音乐</a>
+				<a href="#" class="mymusic">我的音乐</a>
+				<div class="subnav">
+					<div class="subnav-main">
+						<a href="#">歌单</a>
+						<a href="#">电台</a>
+						<a href="#">音乐人</a>
+						<a href="#">客户端</a>
+					</div>
+				</div>
+				<div class="search">
+					<form action="/search" method="get" id="search">
+						<input type="submit" class="search-icon" value title="搜索">
+						<input type="text" placeholder="音乐搜索，找人..." class="keyword">
+					</form>
+				</div>
+				<div class="login-nav">
+					<a href="#" class="free-register">免费注册</a>
+					<div class="login-nav-list">
+						<a href="#" class="enter">立即登录</a>
+						<a href="#" class="sina"><b></b></a>
+						<a href="#" class="qq"><b></b></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- header结束 -->
+	<!-- nav 开始 -->
+	<div id="nav">
+		<div class="nav-main">
+			<div class="nav-main-list">
+				<div class="title-nav">
+					<a href="#" class="hot">热门</a>
+					<a href="#">排行榜</a>
+					<a href="#">专辑</a>
+					<a href="#">艺人</a>
+					<a href="#">风格</a>
+					<a href="#">阿里音乐排行榜</a>
+				</div>
+				<div class="vip-nav">
+					<a href="#">
+						<b class="icon vip-icon"></b>
+						VIP会员
+					</a>
+					<a href="#">
+						<b class="icon last-icon"></b>
+						最近播放
+					</a>
+					<a href="#">
+						<b class="icon dowm-icon"></b>
+						下载客户端
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- nav 结束 -->
+	<!-- container开始 -->
+	<div id="container">
+		<div class="container-main">
+			<div class="section">
+				<!-- 右边 -->
+				<div class="section-right">
+					<div class="content-main-right">
+						<div class="login-mobile">
+							<div class="login-mobile-ewm">
+								<a href="http://www.xiami.com"><img src="image/code.png" alt="二维码"></a>
+							</div>
+							<div class="login-mobile-btn">
+								<a href="#" class="btn1"><i></i><span>虾米音乐 &nbsp&nbsp&nbspfor iphone</span></a>
+								<a href="#" class="btn2"><i></i><span>虾米音乐 &nbsp&nbsp&nbsp for Android</span></a>
+							</div>
+						</div>
+						<div class="login-denglu">
+							<div class="denglu-top">
+								<span>快速登录</span>
+								<div class="denglu-ewm"><a href="#"></a></div>
+							</div>
+							<div class="denglu-bottom">
+								<a href="#" class="btn3">登录</a>
+								
+								<a href="#" class="forfree">免费注册</a>
+								<span>立即</span>
+							</div>
+						</div>
+						<div class="login-today">
+							<div class="today-title">
+								<h2>今日音乐人</h2>
+							</div>
+							<div class="today-img">
+								<a href="#"><img src="image/today.jpg" alt=""></a>
+							</div>
+							<div class="today-btn">
+								<a href="#" class="love"><i></i></a>
+								<a href="#" class="enjoy"><i></i></a>
+							</div>
+							<div class="today-word">
+								<p><a href="#"><strong>海风（先行版）</strong><span>by 佟研</span></a></p>
+								<p class="underline">
+									我往日那些朋友啊
+									这些记忆都随海风而去了
+								</p>
+							</div>
+							<div class="today-over">
+								<a href="#">听完吱一声</a>
+							</div>
+						</div>
+						<div class="login-tonight">
+							<div class="tonight-title">
+								<h2>星期二 深夜</h2>
+							</div>
+							<div class="tonight-img">
+								<div class="tonight-img-list">
+									<a href="#"><img src="image/tonight1.jpg" alt="">寂寞</a>
+								</div>
+								<div class="tonight-img-list">
+									<a href="#"><img src="image/tonight1.jpg" alt="">寂寞</a>
+								</div>
+								<div class="tonight-img-list">
+									<a href="#"><img src="image/tonight1.jpg" alt="">寂寞</a>
+								</div>
+								<div class="tonight-img-list">
+									<a href="#"><img src="image/tonight1.jpg" alt="">寂寞</a>
+								</div>
+								<div class="tonight-img-list">
+									<a href="#"><img src="image/tonight1.jpg" alt="">寂寞</a>
+								</div>
+								<div class="tonight-img-list">
+									<a href="#"><img src="image/tonight1.jpg" alt="">寂寞</a>
+								</div>
+								<div class="tonight-img-list">
+									<a href="#"><img src="image/tonight1.jpg" alt="">寂寞</a>
+								</div>
+								<div class="tonight-img-list">
+									<a href="#"><img src="image/tonight1.jpg" alt="">寂寞</a>
+								</div>
+							</div>
+						</div>
+						<div id="hot-text">
+							<ul id="hotnav">
+								<li>小说更新</li>
+								<li>我的小组</li>
+								<li class="hotselected">热门话题<span><a href="#">&nbsp/&nbsp更多</a></span></li>
+							</ul>
+							<div id="hotnav-main">
+								<div class="hothidebox">你还未加入任何小组，赶快去找到组织吧！</div>
+								<div class="hothidebox">你还未加入任何小组，赶快去找到组织吧！</div>
+								<div>
+									<p>【虾米歌单】问题反馈帖</p>
+									<p>我知道这样很矫情，但精选集变成了歌单，我走了</p>
+									<p>刚刚更新的虾米PC3.04版到底是制造BUG还是修复BUG?</p>
+									<p>请把通知里的专辑、关注、评论、点赞分开</p>
+									<p>【虾米歌单】问题反馈帖</p>
+									<p>我知道这样很矫情，但精选集变成了歌单，我走了</p>
+								</div>
+							</div>
+						</div>
+						<div class="login-ban">
+							<a href="#"></a>
+						</div>
+					</div>
+				</div>
+				<!-- 左边 -->
+				<div class="section-left">
+					<!-- 轮播 -->
+					<div id="slideshow">
+						<ul id="slideshow-main" style="left:-740px">
+							<li><a href="#"><img src="image/slideshow5.jpg" alt=""></a></li>
+							<li><a href="#"><img src="image/slideshow1.jpg" alt=""></a></li>
+							<li><a href="#"><img src="image/slideshow2.jpg" alt=""></a></li>
+							<li><a href="#"><img src="image/slideshow3.jpg" alt=""></a></li>
+							<li><a href="#"><img src="image/slideshow4.jpg" alt=""></a></li>
+							<li><a href="#"><img src="image/slideshow5.jpg" alt=""></a></li>
+							<li><a href="#"><img src="image/slideshow1.jpg" alt=""></a></li>
+						</ul>
+						<div id="showbutton">
+							<span class="on" index=1></span>
+							<span index=2></span>
+							<span index=3></span>
+							<span index=4></span>
+							<span index=5></span>
+						</div>
+					</div>	
+					<a href="javascript:;" class="arrow" id="prev"></a>
+					<a href="javascript:;" class="arrow" id="next"></a>				
+					<!-- 轮播 -->
+					<!-- 猜你喜欢 -->
+					<div id="recommend">
+						<h2>猜你喜欢<span><a href="#">&nbsp/&nbsp更多</a></span></h2>
+						<div class="recommend-main">
+							<!-- 1 -->
+							<div class="recommend-main-list">
+								<div class="recommend-image cur-image">
+									<img src="image/recommend-img1.jpg" alt="">
+									<img src="image/recommend-img2.jpg" alt="">
+									<img src="image/recommend-img3.jpg" alt="">
+									<img src="image/recommend-img4.jpg" alt="">
+									<a href=""><b class="playicon"></b></a>
+								</div>
+								<div class="recommend-info">
+									<p>基于你最近听的音乐</p>
+									<strong>今日推荐歌单</strong>
+								</div>
+							</div>
+							<!-- 2 -->
+							<div class="recommend-main-list">
+								<div class="recommend-img">
+									<img src="image/re-list1.jpg" alt="">
+									<div class="hide">
+										<ul>
+											<li><a href="#">收藏</a></li>
+											<li><a href="#">添加到</a></li>
+											<li><a href="#">分享到</a></li>
+										</ul>
+									</div>
+									<a href="#"><b class="playbtn"></b></a>
+								</div>
+								<div class="recommend-img-info">
+									<p>基于最近流行给你推荐</p>
+									<div class="info-list">
+										<a href="#">问题餐厅 配乐原声带 Vol.2</a>
+										<p>梁晓雪</p>
+									</div>
+								</div>
+							</div>
+							<!-- 3 -->
+							<div class="recommend-main-list">
+								<div class="recommend-img">
+									<img src="image/re-list2.jpg" alt="">
+									<div class="hide">
+										<ul>
+											<li><a href="#">收藏</a></li>
+											<li><a href="#">添加到</a></li>
+											<li><a href="#">分享到</a></li>
+										</ul>
+									</div>
+									<a href="#"><b class="playbtn"></b></a>
+								</div>
+								<div class="recommend-img-info">
+									<p>基于最近流行给你推荐</p>
+									<div class="info-list">
+										<a href="#">问题餐厅 配乐原声带 Vol.2</a>
+										<p>梁晓雪</p>
+									</div>
+								</div>
+							</div>
+							<!-- 4 -->
+							<div class="recommend-main-list">
+								<div class="recommend-img">
+									<img src="image/re-list3.jpg" alt="">
+									<div class="hide">
+										<ul>
+											<li><a href="#">收藏</a></li>
+											<li><a href="#">添加到</a></li>
+											<li><a href="#">分享到</a></li>
+										</ul>
+									</div>
+									<a href="#"><b class="playbtn"></b></a>
+								</div>
+								<div class="recommend-img-info">
+									<p>基于最近流行给你推荐</p>
+									<div class="info-list">
+										<a href="#">问题餐厅 配乐原声带 Vol.2</a>
+										<p>梁晓雪</p>
+									</div>
+								</div>
+							</div>
+							<!-- 5 -->
+							<div class="recommend-main-list">
+								<div class="recommend-img">
+									<img src="image/re-list.jpg" alt="">
+									<div class="hide">
+										<ul>
+											<li><a href="#">收藏</a></li>
+											<li><a href="#">添加到</a></li>
+											<li><a href="#">分享到</a></li>
+										</ul>
+									</div>
+									<a href="#"><b class="playbtn"></b></a>
+								</div>
+								<div class="recommend-img-info">
+									<p>基于最近流行给你推荐</p>
+									<div class="info-list">
+										<a href="#">问题餐厅 配乐原声带 Vol.2</a>
+										<p>梁晓雪</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 猜你喜欢介绍 -->
+					<!-- 四图开始 -->
+					<div id="banner-four">
+						<a href="#"><img src="image/four1.jpg" alt=""></a>
+						<a href="#"><img src="image/four2.jpg" alt=""></a>
+						<a href="#"><img src="image/four3.jpg" alt=""></a>
+						<a href="#"><img src="image/four4.jpg" alt="" class="four4"></a>
+					</div>
+					<!-- 四图结束 -->
+					<div id="new-cd">
+						<h2>
+							新碟首发
+							<span>
+								<a href="#">&nbsp/&nbsp更多</a>
+							</span>
+							<div id="cdnav">
+								<ul id="cdlist">
+									<li><a href="#" class="all">全部</a></li>
+									<li class="fence"></li>
+									<li><a href="#">华语</a></li>
+									<li class="fence"></li>
+									<li><a href="#">欧美</a></li>
+									<li class="fence"></li>
+									<li><a href="#">日本</a></li>
+									<li class="fence"></li>
+									<li><a href="#">韩国</a></li>
+								</ul>
+							</div>
+							<ul id="cd-main" style="left:0px">
+								<li>
+									<div class="cd-img">
+										<img src="image/cd1.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd2.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd3.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd4.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd5.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd1.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd2.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd3.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd4.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd5.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd1.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd2.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd3.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd4.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd5.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd1.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd2.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd3.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd4.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+								<li>
+									<div class="cd-img">
+										<img src="image/cd5.jpg" alt="">
+									</div>
+									<div class="cd-info">
+										<span href="#">一诺千年</span>
+										<p>阿杜</p>
+									</div>
+								</li>
+							</ul>
+						</h2>
+						<a href="javascript:;" class="arrow" id="cdprev"></a>
+						<a href="javascript:;" class="arrow" id="cdnext"></a>
+					</div>
+
+					<!-- 新歌歌单 -->
+					<div id="new-list">
+						<h2>虾米歌单<span><a href="#">&nbsp/&nbsp更多</a></span></h2>
+						<ul id="new-list-main" style="left:0px">
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd1.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd2.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd3.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd4.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd5.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd1.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd2.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd3.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd4.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd5.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd1.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd2.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd3.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd4.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd5.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd1.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd2.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd3.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd4.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							<li>
+								<div class="new-list-img">
+									<img src="image/cd5.jpg" alt="">
+								</div>
+								<div class="new-list-info">
+									<span href="#">一诺千年</span>
+									<p>阿杜</p>
+								</div>
+							</li>
+							
+						</ul>
+						<a href="javascript:;" class="arrow" id="newlistprev"></a>
+						<a href="javascript:;" class="arrow" id="newlistnext"></a>
+					</div>
+					<!-- 新歌歌单结束 -->
+					<!-- 大虾推荐 -->
+					<div class="recommend">
+					<div class="recommend-title">
+						<strong>大虾推荐</strong>
+						<span>/更多</span>
+					</div>
+					<div class="recommend-table">
+						<table>
+							<tbody>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a>
+									</td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+									<div class="moren">
+										<span></span>
+										<ul>
+											<li>收藏</li>
+											<li>分享到</li>
+											<li>转发到</li>
+											<li>添加到</li>
+										</ul>
+									</div></a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a>
+								
+									</td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+									<div class="moren">
+										<span></span>
+										<ul>
+											<li>收藏</li>
+											<li>分享到</li>
+											<li>转发到</li>
+											<li>添加到</li>
+										</ul>
+									</div></a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a>
+									</td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+									<div class="moren">
+										<span></span>
+										<ul>
+											<li>收藏</li>
+											<li>分享到</li>
+											<li>转发到</li>
+											<li>添加到</li>
+										</ul>
+									</div></a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a>
+									</td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+									<div class="moren">
+										<span></span>
+										<ul>
+											<li>收藏</li>
+											<li>分享到</li>
+											<li>转发到</li>
+											<li>添加到</li>
+										</ul>
+									</div></a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a>
+								
+									</td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+									<div class="moren">
+										<span></span>
+										<ul>
+											<li>收藏</li>
+											<li>分享到</li>
+											<li>转发到</li>
+											<li>添加到</li>
+										</ul>
+									</div></a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a>
+								
+									</td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+									<div class="moren">
+										<span></span>
+										<ul>
+											<li>收藏</li>
+											<li>分享到</li>
+											<li>转发到</li>
+											<li>添加到</li>
+										</ul>
+									</div></a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a>
+								
+									</td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+									<div class="moren">
+										<span></span>
+										<ul>
+											<li>收藏</li>
+											<li>分享到</li>
+											<li>转发到</li>
+											<li>添加到</li>
+										</ul>
+									</div></a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+								<tr>
+									<td class="song">
+										<a href="#">
+											一辈子孤单
+											<span>刘若英</span>
+											<div class="moren">
+												<span></span>
+												<ul>
+													<li>收藏</li>
+													<li>分享到</li>
+													<li>转发到</li>
+													<li>添加到</li>
+												</ul>
+											</div>
+										</a></td>
+									<td class="songword"><span>想过要将就一点 却发现将就更难</span></td>
+									<td class="timeout"><span>4分钟前</span></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="play">
+							<span></span>
+							<a href="#">一键播放</a>
+							</div>
+						</div>
+					</div>
+					</div>					
+					<!-- 大虾推荐 -->
+				
+
+
+
+
+
+
+				</div>
+				<!-- 左边介绍 -->
+
+
+
+
+
+
+
+
+				
+			</div>
+		</div>
+	</div>
+	<!-- container结束 -->
+	<!-- 底部选项卡 -->
+	<div id="banner">
+		<div class="banner-main">
+			<ul id="banner-nav">
+				<li class="selected">我的订阅</li>
+				<li>热门动态</li>
+				<li>音乐人企划</li>
+				<li>techno</li>
+				<li>乡村</li>
+				<li>武侠</li>
+			</ul>
+			<div id="banner-main">
+				<div>
+					<ul id="dingyue">
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hidebox">
+					<ul id="dongtai">
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hidebox">
+					<ul id="qihua">
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hidebox">
+					<ul id="tech">
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hidebox">
+					<ul id="xiangchun">
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+					</ul>
+				</div>
+				<div class="hidebox">
+					<ul id="wuxia">
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li class="second-img">
+							<a href="#" class="more">音乐人企划</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						<li>
+							<img src="image/bannerlist1.jpg" alt="">
+							<a href="#">后青春的诗</a>
+							<span>五月天</span>
+							<a href="#" class="more">热门动态</a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 底部选项卡 -->
+	<!-- 链接 -->
+	<div id="links">
+		<div class="links-main">
+			<div class="links-main-top">
+				<div class="links-main-left">
+					<ul class="links-list">
+						<h2>关于</h2>
+						<li><a href="#">关于我们</a></li>
+						<li><a href="#">虾米招聘</a></li>
+						<li><a href="#">独立音乐人合作</a></li>
+						<li><a href="#">联系我们</a></li>
+						<li><a href="#">友情链接</a></li>
+					</ul>
+					<ul class="links-list">
+						<h2>特色服务</h2>
+						<li><a href="#">虾米VIP</a></li>
+						<li><a href="#">音乐达人</a></li>
+						<li><a href="#">虾米小组</a></li>
+						<li><a href="#">虾米LOOP</a></li>
+						<li><a href="#">虾米播播</a></li>
+						<li><a href="#">音乐专区</a></li>
+					</ul>
+					<ul class="links-list">
+						<h2>虾米云音乐</h2>
+						<li><a href="#">虾米 for Iphone</a></li>
+						<li><a href="#">虾米 for Android</a></li>
+						<li><a href="#">虾米 for Windows</a></li>
+						<li><a href="#">虾米 for Mac</a></li>
+						<li><a href="#">虾米 for Ipad</a></li>
+					</ul>
+					<ul class="links-list">
+						<h2>更多</h2>
+						<li><a href="#">分类找歌</a></li>
+						<li><a href="#">帮助中心</a></li>
+						<li><a href="#">添加虾米</a></li>
+						<li><a href="#">提交专辑</a></li>
+						<li><a href="#">给虾米提意见</a></li>
+						<li><a href="#">音频上传</a></li>
+					</ul>
+				</div>
+				<div class="links-main-right">
+					<span>合作伙伴:</span>
+					<a href="#"><img src="image/links.jpg" alt=""></a>
+				</div>
+			</div>
+			<!-- 公司 -->
+			<div class="conpany">
+				<a href="#" class="noneborder">阿里巴巴集团</a>
+				<a href="#">阿里巴巴国际站</a>
+				<a href="#">阿里巴巴中国站</a>
+				<a href="#">全球速卖通</a>
+				<a href="#">淘宝网</a>
+				<a href="#">天猫</a>
+				<a href="#">聚划算</a>
+				<a href="#">一淘</a>
+				<a href="#">阿里妈妈</a>
+				<a href="#">飞猪</a>
+				<a href="#">阿里云计算</a>
+				<a href="#">TunOS</a>
+				<a href="#">阿里通讯</a>
+				<a href="#">来往</a>
+				<a href="#">万网</a>
+				<a href="#">高德</a>
+				<a href="#" class="noneborder">优视</a>
+				<a href="#">友盟</a>
+				<a href="#">酷盘</a>
+				<a href="#">虾米</a>
+				<a href="#">阿里星球</a>
+				<a href="#">钉钉</a>
+			</div>
+			<!-- end -->
+			<div class="copyright">
+				<div class="copyright-left">
+					<span>关注虾米：</span>
+					<a href="#"><i class="sina"></i></a>
+					<a href="#"><i class="renren"></i></a>
+					<a href="#"><i class="kongjian"></i></a>
+					<a href="#"><i class="weibo"></i></a>
+					<a href="#"><i class="douban"></i></a>
+				</div>
+				<div class="copyright-right">
+					<div class="introduction">	
+						<p class="int1">© 2007 - <a href="http://www.xiami.com/">阿里巴巴(杭州)文化创意有限公司-</a><a href="#" title="网站地图">网站地图</a></p>
+						<strong></strong>
+						<p class="int2"><a href="#">浙网文[2015]0294-064号</a><a href="#">&nbsp&nbsp&nbsp浙ICP备08103200号-2</a><a href="#">&nbsp&nbsp&nbsp阿里巴巴旗下网站</a></p>
+					</div>	
+					<div class="wen">
+						<a href="#"><img src="image/wen.png" alt=""></a>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -32,6 +32,11 @@
 .recommend-table tr:hover {
   height: 80px;
   background-color: #f1f1f1;
+  transition:all 0.35s;
+
+}
+.recommend-table tr:hover .moren{
+  display: inline-block;
 }
 .recommend-table tr .song {
   width: 390px;
@@ -87,3 +92,50 @@
   width: 60px;
   height: 20px;
 }
+.moren{
+  display:inline-block;
+  width: 35px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin-left: 150px;
+  margin-top: 10px;
+  /*margin-bottom: -10px;*/
+  position: relative;
+  border: 1px solid black;
+  display: none;
+
+}
+.moren span{
+  background-image: url(image/icon.png);
+  background-position: 10px 215px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.moren:hover ul{
+  display: block;
+}
+.moren ul li:hover{
+  background: red;
+}
+
+.moren ul{
+  list-style: none;
+  border: 1px solid red;
+  width: 80px;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  display: none;
+  border-radius: 2px;
+  z-index: 5;
+  background: #fff;
+}
+.moren ul li{
+  height: 20px;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+}
+
