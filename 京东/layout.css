@@ -16,7 +16,6 @@
 	margin: 0 auto;
 	width: 1210px;
 	height: 260px;
-	background-color: red;
 }
 .topnav{
 	float: left;
@@ -344,7 +343,6 @@
 	margin: 10px 10px 0 10px;
 	width: 730px;
 	height: 455px;
-	background-color: green;
 }
 #list{
 	position: absolute;
@@ -932,7 +930,6 @@
 	float: left;
 	width: 330px;
 	height: 480px;
-	background-color: red;
 }
 
 .one-main-left-t{
