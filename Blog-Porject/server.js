@@ -42,7 +42,6 @@ server.set('view engine','html');
 server.use('/',require('./route/web')());
 server.use('/admin/',require('./route/admin')());
 
-
 // 5.default：static  
 server.use(static('./static/'));
 

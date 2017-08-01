@@ -20,6 +20,10 @@ module.exports=function (){
   router.use('/login', require('./login')());
   router.use('/banners', require('./banners')());
   router.use('/custom', require('./custom')());
-
+  router.use('/blog', require('./blog')());
+  router.use('/contact', require('./contact')());
+  router.use('/intro', require('./intro')());
+  router.use('/msg', require('./msg')());
+  router.use('/news', require('./news')());
   return router;
 };
