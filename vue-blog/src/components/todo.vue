@@ -3,8 +3,8 @@
     <div class="container" id="todo">
     <section class="panel">
       <input type="checkbox" id="mark-all" @click="selectAll" :checked="areAllSelected">
-      <input v-model="newTask" @keyup.enter="addTask" placeholder="What do you need to do?" autofocus class="text-input">
-      <button @click="clearList">Clear List</button>
+      <input v-model="newTask" @keyup.enter="addTask" placeholder="This is a todolist , what do you need to do?" autofocus class="text-input">
+      <button @click="clearList" class="clear">Clear List</button>
     </section>
     <section class="list">
       <ul class="list-item">
@@ -94,24 +94,16 @@
         }
   }
 </script>
-<style scoped>
+<style scoped lang="less">
   ul, li {
     margin: 0;
     padding: 0;
     border: 0;
   }
 
-  /* Global Styles */
-
-  body {
-    line-height: 1;
-    font-family: "Lato", sans-serif;
-    background-color: #EFF1F2;
-  }
-
   .container {
     width: 80%;
-    margin: 1em auto 3em;
+    margin: 3em auto 3em;
     border: 1px solid #efefef;
   }
 
@@ -130,14 +122,13 @@
     padding-left: 10px;
     width: 70%;
     height: 35px;
+    font-size: 16px;
     border-radius: 5px;
     outline: none;
     color: #555;
   }
 
-
   button {
-    /* color: #555; */
     background-color: #FFFFFF;
     border: none;
     border-radius: 5px;
@@ -149,56 +140,34 @@
     color: #fff;
     background: #252525;
   }
-
-  /* Task  area */
-
-  .list li {
-    background-color: #454545;
-  }
-
-  .list li button {
-    /* background-color: transparent; */
-    color: #fff;
-    visibility: hidden;
-    font-size: 14px;
-  }
-
-  .list li:hover > button {
-    visibility: visible;
-  }
-
-  .list label {
-    padding-right: 10px;
-    display: inline-block;
-    width: 70%;
-    font-size: 18px;
-    line-height: 24px;
-    color: #fcfcfc;
-    z-index: 2;
-    overflow: hidden;
-  }
-
-  .list li.done label {
-    color: red;
-    text-decoration: line-through;
-  }
-
-  /* Media Queries */
-
-  @media screen and (max-width: 768px) {
-    .container {
-      width: 90%;
-      max-width: 90%;
-    }
-
-    .text-input, .list label {
-      width: 60%;
-      font-size: 14px;
-    }
-
-    button {
-      width: 50px;
-      height: 50px;
+  .done{
+    label{
+      color: red;
+      text-decoration: line-through;
     }
   }
+  .list{
+    li{
+      background-color: #454545;
+      &:hover button{
+        visibility: visible;
+      }
+      button {
+        color: #fff;
+        visibility: hidden;
+        font-size: 14px;
+      }
+    }
+    label {
+      padding-right: 10px;
+      display: inline-block;
+      width: 70%;
+      font-size: 18px;
+      line-height: 24px;
+      color: #fcfcfc;
+      z-index: 2;
+      overflow: hidden;
+    }
+  }
+
 </style>

@@ -91,7 +91,6 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    background: yellow;
   }
   .container:hover .arrow{
     display: block;
@@ -99,7 +98,6 @@
   .slideshow{
     width: 4616px;
     height: 500px;
-    background: pink;
     position: absolute;
     transition: 0.7s;
   }

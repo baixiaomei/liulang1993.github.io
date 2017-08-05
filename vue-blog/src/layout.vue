@@ -10,11 +10,16 @@
           <li><a href="http://www.baidu.com">BLOG</a></li>
           <li><a href="http://www.baidu.com">CONTACT</a></li>
         </ul>
+        <div class="login">
+          <button class="login-in">LOGIN IN</button>
+          <button class="sign-up">SIGN UP</button>
+        </div>
       </div>
     </div>
     <div class="app-container">
       <slideshow></slideshow>
       <todo></todo>
+      <newslist></newslist>
     </div>
     <div class="app-footer">Copyright © 优站精选 | 京ICP备11008151号</div>
   </div>
@@ -23,10 +28,12 @@
 <script>
 import slideshow from './components/slideshow'
 import todo from './components/todo'
+import newslist from './components/newslist'
 export default {
   components: {
     slideshow,
-    todo
+    todo,
+    newslist
   }
 }
 </script>
@@ -56,10 +63,10 @@ export default {
     float: left;
   }
   .nav{
-    width: 70%;
+    width: 50%;
     height: 100%;
     line-height: 100px;
-    margin-left: 15%;
+    margin-left: 10%;
     float: left;
     list-style: none;
     display: inline-block;
@@ -81,10 +88,33 @@ export default {
       }
     }
   }
+  .login{
+    width: 20%;
+    height: 100%;
+    float: right;
+    button{
+      width: 45%;
+      height: 40px;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      margin-left: 5%;
+      margin-top: 30px;
+      font-size: 14px;
+      outline: none;
+      color: #fff;
+      display: inline-block;
+      background: #252525;
+      float: left;
+      &:hover{
+        background: #ff5454;
+      }
+    }
+  }
   .app-container{
     width: 100%;
     padding-top: 5%;
     background:#f5f7fa;
+    padding-bottom: 5%;
   }
   .app-footer{
     width: 100%;
